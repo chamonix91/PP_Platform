@@ -1,39 +1,64 @@
 {% extends '@PermispromoGlobal/Template/Layout.html.twig' %}
 
 {% block content %}
-    <h1>Sources list</h1>
 
-    <table>
-        <thead>
+    <!-- Page length options -->
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <h5 class="panel-title">Sources des appels</h5>
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    <li><a data-action="collapse"></a></li>
+                    <li><a data-action="reload"></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="panel-body">
+
+        </div>
+
+        <table class="table datatable-show-all">
+            <thead>
             <tr>
-                <th>Id</th>
+                <th>ID</th>
                 <th>Nom</th>
-                <th>Actions</th>
+                <th>Description</th>
+                <th>Icone</th>
+                <th>Status</th>
+                <th class="text-center">Actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for source in sources %}
+            </thead>
+            <tbody>
+            {% for source in sources %}
             <tr>
-                <td><a href="{{ path('source_show', { 'id': source.id }) }}">{{ source.id }}</a></td>
-                <td>{{ source.nom }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('source_show', { 'id': source.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('source_edit', { 'id': source.id }) }}">edit</a>
+                <td>{{ source.id }}</td>
+                <td>{{ source.nom }}</a></td>
+                <td>Description</td>
+                <td></td>
+                <td><span class="label label-success">Active</span></td>
+                <td class="text-center">
+                    <ul class="icons-list">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="icon-menu9"></i>
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li><a href="{{ path('source_edit', { 'id': source.id }) }}"><i class=" icon-database-edit2"></i> Modifier</a></li>
+                                <li><a href="#"><i class="icon-x"></i> Supprimer</a></li>
+                                <li><a href="#"><i class="icon-file-pdf"></i> Exporter .pdf</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </td>
             </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            {% endfor %}
 
-    <ul>
-        <li>
-            <a href="{{ path('source_new') }}">Create a new source</a>
-        </li>
-    </ul>
+            </tbody>
+        </table>
+    </div>
+    <!-- /page length options -->
+
+
 {% endblock content %}

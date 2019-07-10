@@ -32,6 +32,8 @@ Encore
 
     .enableVueLoader()
 
+    .addEntry('source','./assets/js/source.js')
+
 // uncomment if you use TypeScript
 //.enableTypeScriptLoader()
 
